@@ -2,7 +2,7 @@
 import './App.css'
 import Home from './components/Home/Home'
 // import Doctors from './components/'
-// import Login from './'
+import Login from './components/Login/Login'
 import Layout from './components/Layout/Layout'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
@@ -12,7 +12,7 @@ import Contact from './components/Contact/Contact'
 // import Navbar from './components/Navbar'
 // import Footer from './components/Footer'
 // import AdminDashboard from './pages/AdminDashboard'
-// import Signup from './pages/Signup'
+import Signup from './components/Signup/Signup'
 // import UserProtectedRoutes from '../context/UserProtectedRoute'
 // import AdminProtectedRoutes from '../context/AdminProtectedRoute'
 // import AddDoctorDashboard from './components/AddDoctorDashboard'
@@ -42,7 +42,14 @@ const router = createBrowserRouter([{
       },
       {path:"*",
         element:<Home/>
-      }
+      },
+      {
+        path:"login",
+        element:<Login/>
+      },
+     { path:"signup",
+      element:<Signup/>
+     }
 
   ]
 }])
