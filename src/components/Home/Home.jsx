@@ -1,16 +1,16 @@
 import React from 'react'
 import Header from '../Header/Header'
-// import SpecialityMenu from '../components/SpecialityMenu'
+ import SpecialityMenu from '../SpecialityMenu/SpecialityMenu'
 // import TopDoctors from '../components/TopDoctors'
-// import Banner from '../components/Banner'
+ import Banner from '../Banner/Banner'
 
 function Home() {
   return (
     <div className="w-screen">
       <Header/>
-      {/* <SpecialityMenu/>
-      <TopDoctors/>
-      <Banner/> */}
+     <SpecialityMenu/>
+      {/*  <TopDoctors/>*/}
+      <Banner/> 
     </div>
   )
 }
