@@ -1,23 +1,25 @@
 
 import './App.css'
 import Home from './components/Home/Home'
-// import Doctors from './components/'
+ import Doctors from './components/Doctors/Doctors'
 import Login from './components/Login/Login'
 import Layout from './components/Layout/Layout'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
 // import MyProfile from './pages/MyProfile'
-// import MyAppointment from './pages/MyAppointment'
-// import Appointment from './pages/Appointment'
-// import Navbar from './components/Navbar'
-// import Footer from './components/Footer'
-// import AdminDashboard from './pages/AdminDashboard'
+ import UserAccount from './components/UserAccountData/UserAccountData'
+ import AdminDashboard from './components/AdminDashboard/AdminDashboard'
 import Signup from './components/Signup/Signup'
 // import UserProtectedRoutes from '../context/UserProtectedRoute'
 // import AdminProtectedRoutes from '../context/AdminProtectedRoute'
 // import AddDoctorDashboard from './components/AddDoctorDashboard'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import ProtectedAuth from './components/ProtectedAuth/ProtectedAuth'
+import ProtectedRoutesUser from './components/ProtectedRoutesUser/ProtctedRoutesUser'
+import MyProfile from './components/MyProfile/MyProfile'
+import ProtectedRoutesAdmin from './components/ProtectedRoutesAdmin/ProtectedRoutesAdmin'
+import Appointment from './components/Appointment/Appointment'
 
 const router = createBrowserRouter([{
   path:"",
@@ -30,8 +32,8 @@ const router = createBrowserRouter([{
     {path:"home",
       element:<Home/>
     },
-    // {path:"/doctors/:speciality?" ,
-    //   element:<Doctors/>},
+    {path:"/doctors/:speciality?" ,
+      element:<Doctors/>},
       {
         path:"about",
         element:<About/>
@@ -45,12 +47,25 @@ const router = createBrowserRouter([{
       },
       {
         path:"login",
-        element:<Login/>
+        element:<ProtectedAuth><Login/></ProtectedAuth>
       },
      { path:"signup",
-      element:<Signup/>
+      element:<ProtectedAuth><Signup/></ProtectedAuth>
+     },
+     {path:"my-profile",
+      element:<ProtectedRoutesUser><MyProfile/></ProtectedRoutesUser>
      }
-
+,{
+  path:"admindashboard",
+  element:<ProtectedRoutesAdmin><AdminDashboard/></ProtectedRoutesAdmin>
+},
+{
+  path:"my-account",
+  element:<ProtectedRoutesUser><UserAccount/></ProtectedRoutesUser>
+},
+{path:"/appointment/:doctorId",
+  element:<Appointment/>
+}
   ]
 }])
 function App() {

@@ -17,12 +17,9 @@ function Login() {
         console.log(loginInfo,"login info")
          //  navigate("/")
       }
-    
- 
     }catch(err){
       console.log(err,"login error")
     }
-  
   }
   let formik = useFormik({
     initialValues:{

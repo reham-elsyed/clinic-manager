@@ -108,7 +108,7 @@ function Navbar() {
          <span className="badge">New</span>
        </a>
      </li>
-     <li onClick={()=>{navigate("/my-appointment")}}><a >My account</a></li></>:null}
+     <li onClick={()=>{navigate("/my-account")}}><a >My account</a></li></>:null}
      {userRole == 'admin'?
      <li onClick={()=>{navigate("/admindashboard")}}><a >My Dashboard</a></li>:null
       }

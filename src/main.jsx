@@ -4,19 +4,26 @@ import App from './App.jsx'
 import './index.css'
 import AuthContextProvider, { AuthContext } from '../context/AuthContext.jsx'
 import  CreateUserDatabaseContextProvider from '../context/UserDbContext.jsx'
-// import DoctorDatabaseContextProvider from '../context/DoctorDatabaseContext.jsx'
+import DoctorDatabaseContextProvider from '../context/DoctorDatabaseContext.jsx'
+import AvailableSlotsContextProvider from '../context/AvailableSlotsContext.jsx'
+import AppointmentContextProvider from '../context/AppointmentContext.jsx'
 // import AppointmentContextProvider from '../context/AppointmentContext.jsx'
-// import AvailableSlotsContextProvider from '../context/AvailableSlotsContext.jsx'
 
 createRoot(document.getElementById('root')).render(
 
-    <AuthContextProvider>
+  <AuthContextProvider>
     <CreateUserDatabaseContextProvider>
+      <DoctorDatabaseContextProvider>
+        <AvailableSlotsContextProvider>
+          <AppointmentContextProvider>
               <StrictMode>
                 <App />
                 </StrictMode>
-                </CreateUserDatabaseContextProvider>
-                </AuthContextProvider>
+          </AppointmentContextProvider>
+        </AvailableSlotsContextProvider>
+      </DoctorDatabaseContextProvider>
+    </CreateUserDatabaseContextProvider>
+  </AuthContextProvider>
   
     
 )
