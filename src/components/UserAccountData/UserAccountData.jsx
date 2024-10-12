@@ -6,6 +6,7 @@ import { AppointmentContext } from '../../../context/AppointmentContext'
 import { AvailableSlotsContext } from '../../../context/AvailableSlotsContext'
 import { AuthContext } from "../../../context/AuthContext";
 import { useQueryClient } from '@tanstack/react-query';
+import EmptyDate from '../EmptyData/EmptyDate'
 function UserAccount() {
 const queryClient=useQueryClient()
 const navigate = useNavigate()
@@ -72,6 +73,8 @@ try{
 
         <div className ="">
         <div className="overflow-x-auto">
+
+        {appData?.appointments.length == 0? <EmptyDate/>:
   <table className="table">
     {/* head */}
     <thead>
@@ -88,8 +91,11 @@ try{
       </tr>
     </thead>
     <tbody>
-      {/* row 1 */}
-      {appData?.appointments?.map(app=>
+      {/* rows */}
+      
+    
+      
+ {appData?.appointments?.map((app)=>
 
 <tr key={app.key}>
 <th>
@@ -132,11 +138,12 @@ try{
   <button onClick={()=>{handleRemove(app)}} className="btn btn-ghost btn-xs">Cancel appointment</button>
 </th>
 </tr> 
-      )}
-    
+     
+)}
     </tbody>
    
   </table>
+   }
 </div>
      </div>
     </div>

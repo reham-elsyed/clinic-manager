@@ -69,28 +69,32 @@ async function handleDeletDoctor(id){
           <p role="tab" className="btn bg-fuchsia-100" onClick={()=>{filterDoctors(spec.speciality)}}>{spec.speciality}</p>
          )}
         </div>
-        <div className="container px-5 mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 relative gap-2 ">
+        <div className="container px-5 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-5 relative gap-2 ">
           {dataDisplay?.map((doctor, index)=>
           <div>
        <div
        onClick={()=>{navigate(`/appointment/${doctor.id}`)}}
         key={index} className="card card-compact bg-base-100 min-h-full  shadow-xl">
-          <p>{doctor.user_id}</p>
+          
        <figure>
          <img
          className="w-full"
            src={doctor?.img}
            alt={doctor.name} />
        </figure>
-       <div className="card-body">
-         <h2 className="card-title">{doctor.name}</h2>
+       <div className="card-body ">
+         <h2 className="card-title text-sm md:text-md lg:text-lg">{doctor.name}</h2>
          <p className="text-gray-600 text-sm">{doctor.speciality}</p>
         
        </div>
      </div>
-   {userRole === 'admin'?<button
+   {userRole === 'admin'?
+   <div className='flex justify-center'>
+     <button
    onClick={()=>{handleDeletDoctor(doctor.user_id)}}
-   className="badge badge-lg -translate-y-9 p-2">remove doctor</button>: null}
+   className="btn btn-xs  bg-red-500 text-white text-xs -translate-y-9">remove doctor</button>
+   </div>
+  : null}
     </div>
     )}
         </div>

@@ -19,10 +19,11 @@ const addDoctorAndCreateAccount = async (values, res) => {
      
      
         console.log('Doctor added successfully' ,data, response);
-      
+      return data
        
       } catch (error) {
         console.log('Error adding data:', error);
+        throw error
       }
     };
 

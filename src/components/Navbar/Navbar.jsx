@@ -2,7 +2,7 @@ import  { useContext, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../context/AuthContext'
 import { CreateUserDatabaseContext } from "../../../context/UserDbContext";
-
+import * as style from "./Navbar.module.css";
 function Navbar() {
   const navigate = useNavigate()
   const {userRole} = useContext(CreateUserDatabaseContext)
@@ -46,7 +46,7 @@ function Navbar() {
           tabIndex={0}
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
           <NavLink to="/">
-          <li className="p-1">HOME</li>
+          <li className={`p-1 ${style.line} `}>HOME</li>
           <hr className="border-none h-0.5 bg-primary w-3/4 m-auto hidden" />
         </NavLink>
         <NavLink to="/doctors">
@@ -54,7 +54,7 @@ function Navbar() {
           <hr className="border-none h-0.5 bg-primary w-3/4 m-auto hidden"/>
         </NavLink>
         <NavLink to="/about">
-          <li className="p-1">ABOUt</li>
+          <li className="p-1">ABOUT</li>
           <hr className="border-none h-0.5 bg-primary w-3/4 m-auto hidden" />
         </NavLink>
         <NavLink to="contact">
@@ -69,20 +69,19 @@ function Navbar() {
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1">
         <NavLink to="/">
-          <li className="p-1">HOME</li>
-          <hr className="border-none h-0.5 bg-primary w-3/4 m-auto hidden focus:block"/>
+          <li className={`p-1 ${style.line}`}>HOME</li>
         </NavLink>
         <NavLink to="/doctors">
-          <li className="p-1">ALL DOCTORS</li>
-          <hr className="border-none h-0.5 bg-primary w-3/4 m-auto hidden"/>
+          <li className={`p-1 ${style.line}`}>ALL DOCTORS</li>
+          <hr className="border-none h-0.5 bg-primary w-3/4 m-auto hidden focus:block"/>
         </NavLink>
         <NavLink to="/about">
-          <li className="p-1">ABOU</li>
-          <hr className="border-none h-0.5 bg-primary w-3/4 m-auto hidden"/>
+          <li className={`p-1 ${style.line}`}>ABOUT</li>
+          <hr className="border-none h-0.5 bg-primary w-3/4 m-auto hidden focus:block"/>
         </NavLink >
         <NavLink to="/contact">
-          <li className="p-1">CONTACT</li>
-          <hr className="border-none h-0.5 bg-primary w-3/4 m-auto hidden"/>
+          <li className={`p-1 ${style.line}`}>CONTACT</li>
+          <hr className="border-none h-0.5 bg-primary w-3/4 m-auto hidden focus:block"/>
         </NavLink >
       </ul>
     </div>

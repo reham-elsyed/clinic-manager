@@ -20,6 +20,19 @@ useEffect(()=>{
 }
 },[])
 //add data to users database
+// const addData = async (values, res) => {
+//   console.log(currentUser)
+//     try {
+//        const data= await setDoc(doc(db,"users", res.user.uid), values);  
+//       localStorage.setItem("role", values.role)
+//       setUserRole(values.role)
+//         console.log('Data added successfully' ,data);
+//       } catch (error) {
+//         console.log('Error adding data:', error);
+//       }
+//     };
+
+//add data to users database
 const addData = async (values, res) => {
   console.log(currentUser)
     try {
@@ -31,6 +44,8 @@ const addData = async (values, res) => {
         console.log('Error adding data:', error);
       }
     };
+
+
 //get data for the current user
  const getData = async (res) => {
         try {

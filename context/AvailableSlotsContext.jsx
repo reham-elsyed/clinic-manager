@@ -33,12 +33,7 @@ for (let day = startOfWeek; day < endOfWeek; day = day.plus({days:1}))
 console.log(schedule)
 return schedule
 }
-useEffect(()=>{
- // generateSchedual(456)
-//  saveDoctorSchedule()
-//  getDoctorSlots()
-//updateAvailableProperty()
-},[])
+
 
 
 async function saveDoctorSchedule(doctorId){
@@ -59,8 +54,10 @@ async function saveDoctorSchedule(doctorId){
         )
      
         console.log(`Schedule saved for Doctor ${doctorId}`);
+        return ({message:'success'})
     } catch (error) {
       console.error('Error saving schedule:', error);
+      throw error
     }
     }
 /// get eachdoctor slots
@@ -76,6 +73,7 @@ async function saveDoctorSchedule(doctorId){
       }
     catch(err){
       console.log(err)
+      throw err
     }
     }
 
@@ -86,7 +84,7 @@ async function saveDoctorSchedule(doctorId){
         
         if (!docSnapshot.exists()) {
           console.log('Document does not exist!');
-          return;
+          throw new Error('Document does not exist');
         }
     
         const data = docSnapshot.data();
@@ -97,9 +95,9 @@ async function saveDoctorSchedule(doctorId){
         // Write back the updated data
         await updateDoc(docRef, data);
         
-        console.log('Successfully updated the available property');
+        return { success: true, message: 'Successfully updated the available property' };
       } catch (error) {
-        console.error('Error updating the available property:', error);
+        throw ( error);
       }
     }
 

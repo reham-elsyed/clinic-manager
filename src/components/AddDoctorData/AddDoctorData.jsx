@@ -5,6 +5,9 @@ import { AvailableSlotsContext } from '../../../context/AvailableSlotsContext'
 import { imagestorage } from '../../../firebase'
 import {ref, uploadBytes, getDownloadURL} from'firebase/storage'
 import { v4 } from 'uuid'
+import 'react-toastify/dist/ReactToastify.css';
+
+import { toast } from 'react-toastify'
 //import {alldoctors} from '../assets/assets/assets_frontend/assets'
 function AddDoctorDashboard() {
   const [img, setImg] =useState()
@@ -21,13 +24,18 @@ function AddDoctorDashboard() {
    
   
     async function handleRegister(formValues){
-    const id = generateUUID()
-    const downloadURL = await handleImageUpload()
-    const values ={...formValues, user_id:id, img:downloadURL}
-    await addDoctorAndCreateAccount(values)
-    await saveDoctorSchedule(id)
-
-console.log(values)
+      try{
+        const id = generateUUID()
+        const downloadURL = await handleImageUpload()
+        const values ={...formValues, user_id:id, img:downloadURL}
+        await addDoctorAndCreateAccount(values)
+        await saveDoctorSchedule(id)
+    toast.success("doctor added successfully")
+    console.log(values)
+      } catch(err){
+        toast.error("something went wrong")
+      }
+  
   }
 async function createDBD(){
   // alldoctors.map(async (doctor) =>{

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { AppointmentContext } from '../../../context/AppointmentContext'
 import { useQueryClient } from '@tanstack/react-query';
 import { AvailableSlotsContext } from '../../../context/AvailableSlotsContext'
+import EmptyDate from '../EmptyData/EmptyDate'
 function AdminDashAppointments() {
   const queryClient=useQueryClient()
 
@@ -67,10 +68,10 @@ try{
 
   return (
     <div>
-      <div className="flex flex-col sm:flex-row justify-between gap-1 lg:px-10 lg:mx-auto">
-      <div className='card p-1  sm:p-3 text-slate-500 border-stone-100 border'><p>num Of Doctors</p><p className='badge w-full border-0 bg-zinc-600 text-white'>{numOfDoctors}</p></div> 
-      <div className='card p-1  sm:p-3 text-slate-500 border-stone-100 border'><p>num Of Patients</p><p className='badge w-full border-0 bg-zinc-600 text-white'>{numOfPatients}</p></div> 
-      <div className='card  p-1  sm:p-3 text-slate-500 border-stone-100 border'><p>Num Of Appointments</p><p className='badge w-full border-0 bg-zinc-600 text-white'>{appData?.appointments.length}</p></div> 
+      <div className="flex flex-col sm:flex-row justify-center p-3 gap-5 lg:px-10 lg:mx-auto bg-slate-50">
+      <div className='card p-1  sm:p-4 text-slate-500 glass border-stone-100 border'><p>num Of Doctors</p><p className='badge w-full mt-2 border-0 bg-zinc-600 text-white'>{numOfDoctors}</p></div> 
+      <div className='card p-1  sm:p-4 text-slate-500 glass border-stone-100 border'><p>num Of Patients</p><p className='badge w-full mt-2  border-0 bg-zinc-600 text-white'>{numOfPatients}</p></div> 
+      <div className='card  p-1  sm:p-4 text-slate-500 glass border-stone-100 border'><p>Num Of Appointments</p><p className='badge w-full mt-2  border-0 bg-zinc-600 text-white'>{appData?.appointments.length}</p></div> 
 
       </div>
       
@@ -79,14 +80,13 @@ try{
 
         <div className ="">
         <div className="overflow-x-auto">
+        {appData?.appointments.length ==0? <EmptyDate/>:
   <table className="table">
     {/* head */}
     <thead>
       <tr>
         <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
+         
         </th>
         <th>Patient Name</th>
         <th>Time of consultation</th>
@@ -96,13 +96,12 @@ try{
     </thead>
     <tbody>
       {/* row 1 */}
-      {appData?.appointments?.map(app=>
+     
+ {appData?.appointments?.map((app, index)=>
 
 <tr key={app.key}>
 <th>
-  <label>
-    <input type="checkbox" className="checkbox" />
-  </label>
+ <p>{index + 1}</p>
 </th>
 <td>
   <div className="flex items-center gap-3">
@@ -136,7 +135,7 @@ try{
 </td>
 
 <th>
-  <button onClick={()=>{handleRemove(app)}} className="btn btn-ghost btn-xs">Cancel Appointment</button>
+  <button onClick={()=>{handleRemove(app)}} className="btn bg-red-800 text-white  btn-md">Cancel Appointment</button>
 </th>
 </tr> 
       )}
@@ -144,6 +143,7 @@ try{
     </tbody>
    
   </table>
+}
 </div>
      </div>
     </div>

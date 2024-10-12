@@ -3,6 +3,9 @@ import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../../context/AuthContext'
 import { CreateUserDatabaseContext } from '../../../context/UserDbContext'
+import 'react-toastify/dist/ReactToastify.css';
+
+import { toast } from 'react-toastify'
 
 
 function Login() {
@@ -15,9 +18,11 @@ function Login() {
       if(loginInfo){
         await getData(loginInfo)
         console.log(loginInfo,"login info")
-         //  navigate("/")
+        toast.success("log in success")
+       navigate("/")
       }
     }catch(err){
+      toast.error("something went wrong")
       console.log(err,"login error")
     }
   }

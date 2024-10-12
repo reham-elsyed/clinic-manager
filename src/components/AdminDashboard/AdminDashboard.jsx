@@ -21,9 +21,13 @@ function AdminDashboard() {
 
 </div >
 <div className="w-2/3 md:w-3/4 ld:w-4/5">
+{mainData?
+<>
     {mainData === "add-doctor"?<AddDoctorDashboard/>:null}
     {mainData === "appointments"?<AdminDashAppointments/>:null}
     {mainData === 'doctors-list'?<Doctors/>:null}
+    </>
+    :<Doctors/>}
     </div>
     
 

@@ -6,13 +6,9 @@ import Login from './components/Login/Login'
 import Layout from './components/Layout/Layout'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
-// import MyProfile from './pages/MyProfile'
  import UserAccount from './components/UserAccountData/UserAccountData'
  import AdminDashboard from './components/AdminDashboard/AdminDashboard'
 import Signup from './components/Signup/Signup'
-// import UserProtectedRoutes from '../context/UserProtectedRoute'
-// import AdminProtectedRoutes from '../context/AdminProtectedRoute'
-// import AddDoctorDashboard from './components/AddDoctorDashboard'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ProtectedAuth from './components/ProtectedAuth/ProtectedAuth'
@@ -20,6 +16,7 @@ import ProtectedRoutesUser from './components/ProtectedRoutesUser/ProtctedRoutes
 import MyProfile from './components/MyProfile/MyProfile'
 import ProtectedRoutesAdmin from './components/ProtectedRoutesAdmin/ProtectedRoutesAdmin'
 import Appointment from './components/Appointment/Appointment'
+import { ToastContainer } from 'react-toastify'
 
 const router = createBrowserRouter([{
   path:"",
@@ -75,8 +72,9 @@ function App() {
     <>
      <QueryClientProvider client={queryClient}>
    <RouterProvider router={router}></RouterProvider>
+   <ToastContainer/>
    </QueryClientProvider>
-   
+
     </>
   )
 }

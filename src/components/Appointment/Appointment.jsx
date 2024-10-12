@@ -8,8 +8,10 @@ import { DoctorDatabaseContext } from '../../../context/DoctorDatabaseContext'
 import { AvailableSlotsContext } from '../../../context/AvailableSlotsContext'
 import { DateTime } from 'luxon'
 import { useQueryClient } from '@tanstack/react-query';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { CreateUserDatabaseContext } from '../../../context/UserDbContext'
+import { toast } from 'react-toastify'
 function Appointment() {
   const[docSlots, setDocSlots] = useState([]);
 const [slotIndex,setSlotIndex] = useState(0)
@@ -74,23 +76,25 @@ const {getDoctorData ,docData } = useContext(DoctorDatabaseContext)
  async function handleBookingData(){
   if (currentUser && userRole == "user"){
     try{
-      console.log(slotIndex, slotTime, slotTimeIndex)
       const appointment= docSlots[slotIndex][slotTimeIndex]
-     await updateAvailableProperty(appointment);
+     const updated_booking = await updateAvailableProperty(appointment);
+     if(updated_booking.success){
+     toast.success(updated_booking.message)
+     }
      const patientAppoint = {patient_id: currentUser.uid ,...appointment}
      const result = await addAppointment(patientAppoint);
      queryClient.invalidateQueries({ queryKey: ['adminapppointment'] });
 
     console.log(result); 
     }catch (err){
-      alert("not autherized")
+     
+    toast.error(err)
     }}
    else{
-    alert("not autherized")
+    
+  toast.error("not authorized")
     navigate("/login")
    }
-  
- 
  }
    
 const fetchDoctor = async ()=>{
