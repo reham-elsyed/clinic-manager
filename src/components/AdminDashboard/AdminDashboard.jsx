@@ -7,7 +7,7 @@ import AdminDashAppointments from '../AdminDashboardAppointments/AdminDashboardA
 function AdminDashboard() {
   const [mainData, setMainData]= useState("")
   const navigate = useNavigate()
-  const params = useParams()
+ // const params = useParams()
   return (
     <div className="flex ">
 <div className='w-1/3 md:w-1/4 lg:w-1/5'>
