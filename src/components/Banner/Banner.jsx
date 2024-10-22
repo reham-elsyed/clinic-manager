@@ -19,7 +19,7 @@ function Banner() {
     <img
     className="w-full max-w-md bg-inherit  hidden md:block h-[430px]  absolute bottom-0 right-0 z-50  md:w-1/2 lg:w-[375px]"
       src={`https://firebasestorage.googleapis.com/v0/b/authproject-fbe08.appspot.com/o/files%2Fappointment_img.png?alt=media&token=29f0b347-9552-47c6-9e34-e4eb285c6493`}
-      alt="Album" />
+      alt="Album" loading="lazy" />
   </figure>
 </div>
     </div>
