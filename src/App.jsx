@@ -2,7 +2,7 @@
 import './App.css'
 import Home from './components/Home/Home'
  import Doctors from './components/Doctors/Doctors'
-import Login from './components/Login/Login'
+//import Login from './components/Login/Login'
 import Layout from './components/Layout/Layout'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
@@ -17,6 +17,7 @@ import MyProfile from './components/MyProfile/MyProfile'
 import ProtectedRoutesAdmin from './components/ProtectedRoutesAdmin/ProtectedRoutesAdmin'
 import Appointment from './components/Appointment/Appointment'
 import { ToastContainer } from 'react-toastify'
+import DynamicForm from './components/CentralizedForm/signInNew'
 
 const router = createBrowserRouter([{
   path:"",
@@ -43,11 +44,11 @@ const router = createBrowserRouter([{
         element:<Home/>
       },
       {
-        path:"login",
-        element:<ProtectedAuth><Login/></ProtectedAuth>
+        path:"form/:formtype?",
+        element:<ProtectedAuth><DynamicForm/></ProtectedAuth>
       },
-     { path:"signup",
-      element:<ProtectedAuth><Signup/></ProtectedAuth>
+     { path:"form/:formtype?",
+      element:<ProtectedAuth><DynamicForm/></ProtectedAuth>
      },
      {path:"my-profile",
       element:<ProtectedRoutesUser><MyProfile/></ProtectedRoutesUser>

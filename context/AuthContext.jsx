@@ -19,6 +19,7 @@ setCurrentUser(response)
 const login =async (values)=>{
   const user = await  signInWithEmailAndPassword(auth, values.email, values.password)
   setCurrentUser(user.user)
+  console.log(user.user)
   return(user)
 }
 const logout = async ()=>{

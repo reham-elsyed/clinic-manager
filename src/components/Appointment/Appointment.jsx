@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { CreateUserDatabaseContext } from '../../../context/UserDbContext'
 import { toast } from 'react-toastify'
+import Loader from '../Loader/Loader'
 function Appointment() {
   const[docSlots, setDocSlots] = useState([]);
 const [slotIndex,setSlotIndex] = useState(0)
@@ -107,13 +108,12 @@ const fetchDoctor = async ()=>{
   }}
  useEffect(()=>{
   fetchDoctor()
- //getAvailableSlots()
- console.log(data)
  },[doctorId])
 
 
   return (
     <div className="container mx-auto px-5">
+      {isLoadingDoc&& <Loader/>}
 {docdata?
       <div className="  card md:card-side bg-base-100 ">
         <div className="lg:w-1/3 m-2">
@@ -139,7 +139,7 @@ const fetchDoctor = async ()=>{
     <p> Fee: ${docdata?.fees}</p>
    
   </div>
-</div>:<div>...loading </div>}
+</div>:<Loader/>}
 <div className='p-3'>
       <h2>Available Time Slots:</h2>
       <div  className="flex gap-3 items-center w-full overflow-x-scroll mt-4">

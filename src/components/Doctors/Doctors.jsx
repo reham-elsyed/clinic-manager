@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { DoctorDatabaseContext } from '../../../context/DoctorDatabaseContext'
 import { CreateUserDatabaseContext } from '../../../context/UserDbContext'
 import {AvailableSlotsContext} from '../../../context/AvailableSlotsContext'
+import Loader from '../Loader/Loader'
 function Doctors() {
   const {speciality}= useParams()
   const navigate = useNavigate()
@@ -62,6 +63,7 @@ async function handleDeletDoctor(id){
 
   return (
     <div className='px-5 mx-auto py-5' >
+      {isLoading && <Loader/>}
       <h2 className="text-gray-900 text-3xl md:text-lg sm:text-base">Browse through the doctors specialists</h2>
       <div className="flex py-5">
         <div role="tablist" className="flex flex-col gap-2 bg-white tabs-boxed">

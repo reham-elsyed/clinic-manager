@@ -7,19 +7,11 @@ export default function ProtectedAuth(props) {
     const navigate = useNavigate()
     const location = useLocation()
     const currentPathname = window.location.pathname;
-    useEffect(()=>{
-
-        if(localStorage.getItem("role")){
-            console.log(window.location.pathname)
-        
-           
-          return  navigate("/")
-        
-       
-    }
+useEffect(()=>{
+if(localStorage.getItem("role")){
+ console.log(window.location.pathname)  
+ return  navigate("/")
+}
 },[])
-
-return props.children 
-
- 
+return props.children  
 }

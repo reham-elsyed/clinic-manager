@@ -26,7 +26,7 @@ const {addData}= useContext(CreateUserDatabaseContext)
       email:"",
       password:"",
       rePassword:"",
-      role:'user'
+      role:"user"
     },
     validationSchema:mySchema,
     onSubmit:(values)=>{registration(values)}

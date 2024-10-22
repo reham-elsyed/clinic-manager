@@ -1,21 +1,18 @@
-import React, { useContext} from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { CreateUserDatabaseContext } from '../../../context/UserDbContext'
+import React, { useContext} from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { CreateUserDatabaseContext } from '../../../context/UserDbContext';
 import { useNavigate } from 'react-router-dom'
 import { AppointmentContext } from '../../../context/AppointmentContext'
 import { AvailableSlotsContext } from '../../../context/AvailableSlotsContext'
 import { AuthContext } from "../../../context/AuthContext";
 import { useQueryClient } from '@tanstack/react-query';
 import EmptyDate from '../EmptyData/EmptyDate'
+import Loader from '../Loader/Loader'
 function UserAccount() {
 const queryClient=useQueryClient()
-const navigate = useNavigate()
 const {unUpdateAvailableSlot} = useContext(AvailableSlotsContext)
 const {currentUser}= useContext(AuthContext)
-
 const {getAllData, userRole} = useContext(CreateUserDatabaseContext)
-
-
 const {getPatientAppointmentData, removeAppointment} = useContext(AppointmentContext)
     const{isLoading: dataLoading, error: appErr, data: appData } = useQuery({queryKey:['adminapppointment'],queryFn: async () => {
       try {
@@ -33,26 +30,7 @@ const {getPatientAppointmentData, removeAppointment} = useContext(AppointmentCon
     },
    staleTime: 600, })
 
-// function handleNumDisplay(appData){
-//   console.log('Query successful', appData);
-    
-//   if (!appData || !appData.doctors || !appData.appointments) {
-//     console.error('Invalid data structure');
-//   //  setIsLoading(false);
-//    // setError('Failed to load appointment data');
-//     return;
-//   }
-//   const doctors = appData.doctors.filter((item) => item.role === 'doctor')
-//   const patients = appData.doctors.filter((item) => item.role === 'user')
- 
-// console.log(doctors.length)
-//   setNumOfDoctors(doctors.length)
-//   setNumOfPatients(patients.length)
-//  // setIsLoading(false)
-// }
-// useEffect(()=>{
-//   handleNumDisplay(appData)
-// }, appData)
+
 
 async function handleRemove(app){
 try{
@@ -68,13 +46,13 @@ try{
 
   return (
     <div>
-        {dataLoading?<div>... loading</div>:null}
+        {dataLoading?<Loader/>:null}
         {appErr?<div>something went wrong</div>:null}
 
-        <div className ="">
+        <div className ="min-h-screen">
         <div className="overflow-x-auto">
 
-        {appData?.appointments.length == 0? <EmptyDate/>:
+        {!appData?.appointments || appData?.appointments.length === 0? <EmptyDate/>:
   <table className="table">
     {/* head */}
     <thead>

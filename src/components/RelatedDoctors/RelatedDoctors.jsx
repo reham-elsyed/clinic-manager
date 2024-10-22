@@ -28,7 +28,7 @@ const navigate = useNavigate()
        <img
        className="w-full"
          src={doctor.img}
-         alt="Shoes" />
+         alt="doctor name" />
      </figure>
      <div className="card-body">
        <h2 className="card-title">{doctor.name}</h2>

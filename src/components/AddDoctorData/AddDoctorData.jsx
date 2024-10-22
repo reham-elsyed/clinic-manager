@@ -8,7 +8,6 @@ import { v4 } from 'uuid'
 import 'react-toastify/dist/ReactToastify.css';
 
 import { toast } from 'react-toastify'
-//import {alldoctors} from '../assets/assets/assets_frontend/assets'
 function AddDoctorDashboard() {
   const [img, setImg] =useState()
     const {addDoctorAndCreateAccount}= useContext(DoctorDatabaseContext)
@@ -37,26 +36,6 @@ function AddDoctorDashboard() {
       }
   
   }
-async function createDBD(){
-  // alldoctors.map(async (doctor) =>{
-    const doctor = alldoctors[0]
-    const id = generateUUID()
-    const downloadURL = await handleImageUpload(doctor.image)
-    const doctordata = {... doctor, user_id:id, image:downloadURL}
-    console.log(doctordata)
-   
-    
-    await addDoctorAndCreateAccount(doctordata)
-    await saveDoctorSchedule(id)
-
-  // })
-
-}
-
-// useEffect(()=>{
-// createDBD()
- 
-// },[])
   let formik = useFormik({
     initialValues:{
     

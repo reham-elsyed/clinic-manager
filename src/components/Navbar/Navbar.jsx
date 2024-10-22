@@ -115,7 +115,7 @@ function Navbar() {
    </ul>
    </div>:
       <button
-      onClick={()=>{navigate("/login")}}
+      onClick={()=>{navigate("/form/login")}}
        className="btn">Login</button>}
     </div>
      

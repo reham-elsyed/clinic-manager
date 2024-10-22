@@ -6,7 +6,7 @@ import Header from '../Header/Header'
 
 function Home() {
   return (
-    <div className="w-screen">
+    <div className="max-w-screen">
       <Header/>
      <SpecialityMenu/>
       {/*  <TopDoctors/>*/}
