@@ -14,7 +14,12 @@ export function useLogin() {
       const loginInfo = await login(values);
       if (loginInfo) {
         console.log(loginInfo)
-        await getData(loginInfo);
+
+        if (loginInfo) {
+          const userData = await getData(loginInfo.user.uid)
+          localStorage.setItem("role", userData.role)
+          localStorage.setItem("user_id", loginInfo.user.uid)
+        }
         toast.success("Login successful!");
         navigate("/");
       }
