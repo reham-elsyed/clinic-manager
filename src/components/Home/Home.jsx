@@ -6,7 +6,7 @@ import Banner from '../Banner/Banner'
 
 function Home() {
   return (
-    <div className="max-w-screen">
+    <div className="max-w-screen overflow-hidden">
 
       <Header />
       <SpecialityMenu />

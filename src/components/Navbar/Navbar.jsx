@@ -8,7 +8,7 @@ function Navbar() {
   const { userRole } = useContext(CreateUserDatabaseContext)
 
   const { logout, currentUser } = useContext(AuthContext)
-  const [isLoggedIn, setIsLoggedIn] = useState(true)//this should be corrected
+  const [isLoggedIn, setIsLoggedIn] = useState(false)//this should be corrected
   async function loggout() {
     try {
       const log = await logout()
